@@ -1,0 +1,54 @@
+skije,0
+Torba,1
+Digitron,2
+Ručnik,3
+brašno,4
+Krpa za prasinu,5
+Cokoladni sveti Nikola,6
+puding u vrecici,7
+riža,8
+Tuš za oči,9
+BIANCHI VIA NIRONE 7 DAMA BIANCA SORA 7P-PEARL WHITE/BLACK-CK16,10
+suhe sljive,11
+pašta,12
+vindija puding (cokolada, vanilija, ljesnjak),13
+Vata,14
+cokolesnik,15
+pez bomboni,16
+CUBE AXIAL WS IRIDIUM´N´AQUA 2019,17
+sapun,18
+ORBEA COMFORT 42 PACK BLU-GRN 2019,19
+MS industrial tipkovnica,20
+Petarde (pirat, male),21
+Kava,22
+zivotinjsko carstvo,23
+domacica kesi,24
+Olovka,25
+banane,26
+ORBEA AVANT H60 BLU-GRN 2019,27
+BIANCHI VIA NIRONE 7 ALU SORA D2-BLACK/GRAPHITE-CK16,28
+CUBE ATTAIN BLACK´N´RED 2019,29
+Jaja,30
+Konzervirana tuna,31
+mlijeko,32
+Mljeveno meso (mijesano),33
+Cipele,34
+cokolino,35
+zemlja za cvijece,36
+slusalice,37
+keksolino,38
+BIANCHI DAMA BIANCA VIA NIRONE 7 ALU SORA REPARTO CORSE ABR-1 7F-CK16/BLACKWHITE,39
+kakao,40
+Igrace karte,41
+BIANCHI NIRONE 7 ALU SORA REPARTO CORSE ABR-1 1D-CK16/BLK,42
+ORBEA AVANT H60 BK-RED-WH 2019,43
+Rostilj,44
+WD-40,45
+Novčanik,46
+ulje,47
+DVD s 3 epizode Konana barbarina,48
+Ethernet kabel (10m),49
+Televizor Telefunken,50
+jogurt,51
+RIDLEY X-BOW DISC SORA XBO01CM,52
+Mobitel,53
