@@ -2,21 +2,32 @@
 
 reccomendation app based on purchase history
 
+
+
 install
+
 	run "npm i" in /db and /react
 
 
 /db
+
 	db api
+	
 /db_as_json	
+
 	exported database in json format
+	
 /py 	
+
 	util scripts for creating db
+	
 /react
+
 	app for showing simple use case
 
 
 run
+
 	run db react part
 		npm start
 	run json db in react
@@ -26,6 +37,7 @@ run
 		npm run start
 
 todo:
+	
 	filter based on interests
 	link interest with products
 
@@ -36,6 +48,7 @@ todo:
 
 
 resources:
+
 	db template
 		https://github.com/fraigo/node-express-rest-api-example
 
