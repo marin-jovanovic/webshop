@@ -18,26 +18,15 @@ const App = () => {
 
     getTasks()
   }, [])
-
-
   
-  // Fetch Tasks
   const fetchTasks = async () => {
-  //  const res = await fetch('http://localhost:5000/tasks')
-   // const data = await res.json()
- 
-//    console.log("prvi", data)
-
-    return [
-    ]
-//    return data
+    return []
   }
 
   // Fetch Task
   const fetchTask = async (id) => {
     const res = await fetch(`http://localhost:5000/tasks/${id}`)
     let data = await res.json()
-    
     data  ={}
     console.log(" drugi", data)
   return data
@@ -117,8 +106,7 @@ const App = () => {
       mode: 'cors'
     })
 
-    t = await t.json()
-    t = t.data
+    t = (await t.json()).data
 
     console.log('r', t)
 
@@ -140,13 +128,11 @@ const App = () => {
     let result = []
 
     for (const iterator of r) {
-     // console.log(iterator);
       t = await fetch(`http://localhost:8000/api/prod/${iterator}`, {
         mode: 'cors'
       })
 
-      t = await t.json()
-      t = t.data.product
+      t = (await t.json()).data.product
 
       console.log('t', t)
 
@@ -156,68 +142,20 @@ const App = () => {
 
     console.log("result", result)
 
-    setTasks([
-      {
-        "id": 1,
-        "text": result[0],
-        "day": "",
-        "reminder": true
-      },
-      {
-        "id": 2,
-        "text": result[1],
-        "day": "",
-        "reminder": true
-      },
-      {
-        "id": 3,
-        "text": result[2],
-        "day": "",
-        "reminder": true
-      },
-      {
-        "id": 4,
-        "text": result[3],
-        "day": "",
-        "reminder": true
-      },
-      {
-        "id": 5,
-        "text": result[4],
-        "day": "",
-        "reminder": true
-      },
-      {
-        "id": 6,
-        "text": result[5],
-        "day": "",
-        "reminder": true
-      },
-      {
-        "id": 7,
-        "text": result[6],
-        "day": "",
-        "reminder": true
-      },
-      {
-        "id": 8,
-        "text": result[7],
-        "day": "",
-        "reminder": true
-      },
-      {
-        "id": 9,
-        "text": result[8],
-        "day": "",
-        "reminder": true
-      },
-      {
-        "id": 10,
-        "text": result[9],
-        "day": "",
-        "reminder": true
-      },
-    ])
+    let f = [];
+    let i = 0;
+
+    result.forEach(e => {
+
+      f.push({
+        "id": i+1,
+        "text": e,        
+      })
+
+      i++;
+    })
+
+    setTasks(f);
 
   }
 

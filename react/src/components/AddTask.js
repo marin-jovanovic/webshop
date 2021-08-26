@@ -1,16 +1,23 @@
 import { useState } from 'react'
 
 const AddTask = ({ onAdd }) => {
-  const [age, setage] = useState('')
-  const [name, setname] = useState('')
-  const [lastname, setlastname] = useState('')
-  const [sex, setsex] = useState('')
+  let [age, setage] = useState('')
+  let [name, setname] = useState('')
+  let [lastname, setlastname] = useState('')
+  let [sex, setsex] = useState('')
 
 
   const onSubmit = (e) => {
     e.preventDefault()
 
     if (!age || !name|| !lastname || !sex) {
+      console.log("using default vals");
+
+/*       age = 19
+      name = 'Blanduzia';
+      sex = 'female';
+      lastname = 'Pascali';
+ */
       alert('Please fill all fields')
       return
     }

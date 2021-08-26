@@ -1,4 +1,4 @@
-var express = require("express")
+/* var express = require("express")
 var app = express()
 var db = require("./database.js")
 var md5 = require("md5")
@@ -64,3 +64,4 @@ app.get("/", (req, res, next) => {
     res.json({"message":"Ok"})
 });
 
+ */
