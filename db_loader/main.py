@@ -44,23 +44,23 @@ def get_users_hash(age, first_name, gender, last_name):
     # for k,v in users.items():
     #     print(k, "->", v)
 
-
-def get_my_users():
-    c_id_to_prod_id = pd.read_csv('resources/my_users.csv')
-
-    # print(c_id_to_prod_id)
-
-    c_id_to_prod_id['recommendedProducts'] = c_id_to_prod_id['recommendedProducts'].apply(
-        lambda x: [int(i) for i in x.split('|')])
-
-    # print(c_id_to_prod_id)
-
-    d = c_id_to_prod_id["recommendedProducts"].to_dict()
-
-    # for k, v in d.items():
-    #     print(k, "->", v)
-
-    return d
+#
+# def get_my_users():
+#     c_id_to_prod_id = pd.read_csv('resources/my_users.csv')
+#
+#     # print(c_id_to_prod_id)
+#
+#     c_id_to_prod_id['recommendedProducts'] = c_id_to_prod_id['recommendedProducts'].apply(
+#         lambda x: [int(i) for i in x.split('|')])
+#
+#     # print(c_id_to_prod_id)
+#
+#     d = c_id_to_prod_id["recommendedProducts"].to_dict()
+#
+#     for k, v in d.items():
+#         print(k, "->", v)
+#
+#     return d
 
 
 def load_data_from_file(source_filename, skip_num_of_lines=0, is_reversed=False):
@@ -82,27 +82,45 @@ def load_data_from_file(source_filename, skip_num_of_lines=0, is_reversed=False)
 
             if skip_num_of_lines > 0:
                 continue
+            # print(i.rstrip())
 
-            i = i[:-1]
-            t = i.replace("|", ",").split(",")
-
-            print(t)
+            t = i.rstrip().replace("|", ",").split(",")
 
             if is_reversed:
-                d.append(t.reverse())
-
+                d.append(t[::-1])
             else:
                 d.append(t)
 
-            # if not is_reversed:
-            #     d["".join(i for i in t[:-1])] = t[-1]
-            #
-            # else:
-            #     d[t[-1]] = "".join(i for i in t[:-1])
-
-    # [print(i) for i in d.items()]
-
     return d
+
+
+
+def save_prod():
+    db = DatabaseManager()
+
+    for i in load_data_from_file(
+        source_filename="resources/item_id.txt",
+        skip_num_of_lines=0,
+        is_reversed=True
+    ):
+        print(i)
+
+        # db._custom_insert("prod", k, v)
+
+    db._close()
+
+
+def save_reccom():
+    db = DatabaseManager()
+
+    for i in load_data_from_file(
+        source_filename="resources/my_users.csv",
+        skip_num_of_lines=0,
+        is_reversed=False
+    ):
+        print(i)
+
+    db._close()
 
 
 def save_users():
@@ -115,59 +133,15 @@ def save_users():
         is_reversed=True
     ):
         print(i)
-
         # db._custom_insert("users", k, v)
 
     db._close()
 
 
-def save_prod():
-    db = DatabaseManager()
-
-    for k, v in load_data_from_file(
-        source_filename="resources/item_id.txt",
-        skip_num_of_lines=0,
-        is_reversed=True
-    ).items():
-        print(k,v)
-
-        # db._custom_insert("prod", k, v)
-
-    db._close()
-
-
-def save_reccom():
-    db = DatabaseManager()
-
-    # for k, v in get_reccom().items():
-    #     print(k,v)
-
-    for i in get_reccom():
-        print(i)
-
-    db._close()
-
-
-def get_reccom():
-    d = []
-
-    with codecs.open("resources/my_users.csv", "r", "utf-8") as f:
-        l = f.readlines()
-        for i in l[1:]:
-            i = i[:-1]
-            t = i.split(",")
-
-            r = t[-1].split("|")
-
-            d.append([t[0]] + r)
-
-    return d
-
-
 def base_fill():
     save_users()
-    # save_prod()
-    # save_reccom()
+    save_prod()
+    save_reccom()
 
 
 def main():
@@ -232,17 +206,6 @@ def main():
 
     # for i in customers:
     #     print(i)
-
-
-def load_users_hash():
-    users = {}
-    with codecs.open("resources/users_hash.txt", "r", "utf-8") as f:
-        l = f.readlines()
-        for i in l:
-            i = i[:-1].split(",")
-            users[i[0]] = i[1]
-            # print(i)
-    return users
 
 
 if __name__ == '__main__':

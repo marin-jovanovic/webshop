@@ -13,13 +13,13 @@ const AddTask = ({ onAdd }) => {
     if (!age || !name|| !lastname || !sex) {
       console.log("using default vals");
 
-/*       age = 19
+      age = 19
       name = 'Blanduzia';
       sex = 'female';
       lastname = 'Pascali';
- */
-      alert('Please fill all fields')
-      return
+ 
+      // alert('Please fill all fields')
+      // return
     }
 
     onAdd({ age, name, lastname, sex })

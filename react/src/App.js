@@ -6,32 +6,21 @@ import Tasks from './components/Tasks'
 import AddTask from './components/AddTask'
 import About from './components/About'
 
+const crypto = require('crypto')
+
 const App = () => {
   const [showAddTask, setShowAddTask] = useState(false)
   const [tasks, setTasks] = useState([])
 
   useEffect(() => {
     const getTasks = async () => {
-      const tasksFromServer = await fetchTasks()
-      setTasks(tasksFromServer)
+      // const tasksFromServer = await fetchTasks()
+      setTasks({})
     }
 
     getTasks()
   }, [])
   
-  const fetchTasks = async () => {
-    return []
-  }
-
-  // Fetch Task
-  const fetchTask = async (id) => {
-    const res = await fetch(`http://localhost:5000/tasks/${id}`)
-    let data = await res.json()
-    data  ={}
-    console.log(" drugi", data)
-  return data
-  }
-
   // Delete Task
   const deleteTask = async (id) => {
     const res = await fetch(`http://localhost:5000/tasks/${id}`, {
@@ -43,34 +32,10 @@ const App = () => {
       : alert('Error Deleting This product, please refresh website')
   }
 
-  // Toggle Reminder
-  const toggleReminder = async (id) => {
-    const taskToToggle = await fetchTask(id)
-    const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder }
-
-    const res = await fetch(`http://localhost:5000/tasks/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(updTask),
-    })
-
-//    const data = await res.json()
-    let data = {}
-
-    setTasks(
-      tasks.map((task) =>
-        task.id === id ? { ...task, reminder: data.reminder } : task
-      )
-    )
-  }
-
   // Add Task
   const addTask = async (task) => {
 
     console.log('task data', task);
-
     console.log(task["age"]);
 
     let age = task["age"];
@@ -78,16 +43,13 @@ const App = () => {
     let name = task["name"];
     let lastname = task["lastname"];
 
-    const crypto = require('crypto')
-
+    let payload = `[${age}, '${name}', '${sex}', '${lastname}']`
     
-    let hash = crypto.createHash('md5').update('['+age+', \''+name+'\', \''+sex+'\', \''+lastname+'\']').digest("hex")
+    let hash = crypto.createHash('md5').update(payload).digest("hex");
 
     console.log("hash", hash)
-
  
 //    hash = "bbde768edffe850af38746488c9664b9"
-
 
     const res = await fetch(`http://localhost:8000/api/users/${hash}`, {
       mode: 'cors'
@@ -177,7 +139,7 @@ const App = () => {
                 <Tasks
                   tasks={tasks}
                   onDelete={deleteTask}
-                  onToggle={toggleReminder}
+                  // onToggle={toggleReminder}
                 />
               ) : (
                 'No Products To Show'

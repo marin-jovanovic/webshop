@@ -5,18 +5,10 @@ import json
 
 
 def main():
-    """"""
-
-    # create_trx()
-
     create_files()
 
 
 def create_files():
-    # create_users()
-    # create_user_id_log()
-    # create_trx()
-    #
     create_users_hash()
 
 
